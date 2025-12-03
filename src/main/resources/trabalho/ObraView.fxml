@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="745.0" prefWidth="1397.0" style="-fx-background-color: #f0f4f8;"
+            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="trabalho.controller.ObraController">
+
+    <!-- CABEÇALHO -->
+    <top>
+        <VBox style="-fx-background-color: linear-gradient(to right, #667eea 0%, #764ba2 100%);">
+            <!-- Título Principal -->
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 20;">
+                <Label text="📚 Sistema de Gerenciamento de Obras" textFill="white">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+            </HBox>
+
+            <!-- Barra de Ferramentas -->
+            <HBox alignment="CENTER_LEFT" spacing="15" style="-fx-background-color: rgba(255,255,255,0.1); -fx-padding: 15 20;">
+                <Button onAction="#onNovo" text="➕ Novo" prefWidth="120" prefHeight="35"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;">
+                    <effect>
+                        <javafx.scene.effect.DropShadow color="#00000050" radius="5" offsetY="2"/>
+                    </effect>
+                </Button>
+                <Button onAction="#onSalvar" text="💾 Salvar" prefWidth="120" prefHeight="35"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;">
+                    <effect>
+                        <javafx.scene.effect.DropShadow color="#00000050" radius="5" offsetY="2"/>
+                    </effect>
+                </Button>
+                <Button onAction="#onExcluir" text="🗑️ Excluir" prefWidth="120" prefHeight="35"
+                        style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-background-radius: 5; -fx-cursor: hand;">
+                    <effect>
+                        <javafx.scene.effect.DropShadow color="#00000050" radius="5" offsetY="2"/>
+                    </effect>
+                </Button>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="📖 Biblioteca Digital v1.0" textFill="white" style="-fx-font-size: 12px; -fx-opacity: 0.8;" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!-- FORMULÁRIO DE CADASTRO -->
+    <bottom>
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 10, 0, 0, -3);">
+
+            <!-- Título da Seção -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="📝 Dados da Obra" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #667eea;" />
+                <Separator HBox.hgrow="ALWAYS" />
+            </HBox>
+
+            <!-- Grid de Campos -->
+            <GridPane hgap="15" vgap="15">
+                <padding><Insets top="10" /></padding>
+
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="8" />    <!-- Labels col 1 -->
+                    <ColumnConstraints percentWidth="17" />   <!-- Inputs col 1 -->
+                    <ColumnConstraints percentWidth="8" />    <!-- Labels col 2 -->
+                    <ColumnConstraints percentWidth="17" />   <!-- Inputs col 2 -->
+                    <ColumnConstraints percentWidth="8" />    <!-- Labels col 3 -->
+                    <ColumnConstraints percentWidth="17" />   <!-- Inputs col 3 -->
+                    <ColumnConstraints percentWidth="8" />    <!-- Labels col 4 -->
+                    <ColumnConstraints percentWidth="17" />   <!-- Inputs col 4 -->
+                </columnConstraints>
+
+                <!-- LINHA 1 -->
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" spacing="5">
+                    <Label text="ID:" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtId" editable="false"
+                           style="-fx-background-color: #f5f5f5; -fx-border-color: #ddd; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <VBox GridPane.columnIndex="2" GridPane.rowIndex="0" spacing="5">
+                    <Label text="Título:*" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtTitulo" promptText="Digite o título da obra"
+                           style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.columnSpan="3" />
+
+                <VBox GridPane.columnIndex="6" GridPane.rowIndex="0" spacing="5">
+                    <Label text="Volume:" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtVolume" promptText="Ex: 1, 2..."
+                           style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="7" GridPane.rowIndex="0" />
+
+                <!-- LINHA 2 -->
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="5">
+                    <Label text="Tipo:*" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <ComboBox fx:id="cbTipoObra" maxWidth="Infinity" promptText="Selecione..."
+                          style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5;"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <VBox GridPane.columnIndex="2" GridPane.rowIndex="1" spacing="5">
+                    <Label text="Ano:*" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <ComboBox fx:id="cbAnoPublicacao" maxWidth="Infinity" promptText="Selecione ou digite..."
+                          editable="true"
+                          style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5;"
+                          GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                <VBox GridPane.columnIndex="4" GridPane.rowIndex="1" spacing="5">
+                    <Label text="Editora:*" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtEditora" promptText="Nome da editora"
+                           style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="5" GridPane.rowIndex="1" />
+
+                <VBox GridPane.columnIndex="6" GridPane.rowIndex="1" spacing="5">
+                    <Label text="Edição:" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtEdicao" promptText="1ª, 2ª, 3ª..."
+                           style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="7" GridPane.rowIndex="1" />
+
+                <!-- LINHA 3 -->
+                <VBox GridPane.columnIndex="0" GridPane.rowIndex="2" spacing="5">
+                    <Label text="Autor:*" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtAutor" promptText="Nome do autor"
+                           style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.columnSpan="3" />
+
+                <VBox GridPane.columnIndex="4" GridPane.rowIndex="2" spacing="5">
+                    <Label text="ISBN/ISSN:" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtIsbn" promptText="Código ISBN ou ISSN"
+                           style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="5" GridPane.rowIndex="2" />
+
+                <VBox GridPane.columnIndex="6" GridPane.rowIndex="2" spacing="5">
+                    <Label text="Chamada:*" style="-fx-font-weight: bold; -fx-text-fill: #555;" />
+                </VBox>
+                <TextField fx:id="txtChamada" promptText="Código de chamada"
+                           style="-fx-border-color: #667eea; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 8;"
+                           GridPane.columnIndex="7" GridPane.rowIndex="2" />
+
+            </GridPane>
+
+            <!-- Legenda -->
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Label text="* Campos obrigatórios" style="-fx-font-size: 11px; -fx-text-fill: #999;" />
+            </HBox>
+        </VBox>
+    </bottom>
+
+    <!-- TABELA DE OBRAS -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20; -fx-background-color: #f0f4f8;">
+
+            <!-- Cabeçalho da Tabela -->
+            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5 5 0 0;">
+                <Label text="📋 Obras Cadastradas" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #667eea;" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblTotalObras" text="0 obras" style="-fx-font-size: 12px; -fx-text-fill: #999;" />
+            </HBox>
+
+            <!-- Tabela -->
+            <TableView fx:id="table" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-background-radius: 0 0 5 5; -fx-border-color: #e0e0e0; -fx-border-width: 0 1 1 1;">
+                <columns>
+                    <TableColumn fx:id="colId" prefWidth="31.0" text="ID"
+                                 style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="colTitulo" prefWidth="445.0" text="Título" />
+                    <TableColumn fx:id="colAutor" prefWidth="270.0" text="Autor" />
+                    <TableColumn fx:id="colTipoObra" prefWidth="94.0" text="Tipo"
+                                 style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="colAnoPublicacao" prefWidth="93.0" text="Ano"
+                                 style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="colVolume" prefWidth="48.0" text="Vol."
+                                 style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="colEdicao" prefWidth="69.0" text="Edição"
+                                 style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="colEditora" prefWidth="165.0" text="Editora" />
+                    <TableColumn fx:id="colIsbn" prefWidth="104.0" text="ISBN/ISSN"
+                                 style="-fx-alignment: CENTER;" />
+                    <TableColumn fx:id="colChamada" prefWidth="77.0" text="Chamada"
+                                 style="-fx-alignment: CENTER;" />
+                </columns>
+
+                <placeholder>
+                    <VBox alignment="CENTER" spacing="10" style="-fx-padding: 50;">
+                        <Label text="📭" style="-fx-font-size: 48px;" />
+                        <Label text="Nenhuma obra cadastrada" style="-fx-font-size: 16px; -fx-text-fill: #999;" />
+                        <Label text="Clique em 'Novo' para adicionar uma obra" style="-fx-font-size: 12px; -fx-text-fill: #bbb;" />
+                    </VBox>
+                </placeholder>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>
