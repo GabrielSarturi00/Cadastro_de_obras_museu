@@ -1,0 +1,248 @@
+# 📚 Sistema de Gerenciamento de Obras Bibliográficas
+
+Sistema desktop desenvolvido em JavaFX para gerenciamento de acervo de biblioteca (livros, revistas, jornais e livros online).
+
+![Java](https://img.shields.io/badge/Java-21-orange)
+![JavaFX](https://img.shields.io/badge/JavaFX-21-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue)
+
+---
+
+## 🎯 Funcionalidades
+
+- ✅ Cadastrar obras (Livros, Revistas, Jornais, Livros Online)
+- ✅ Editar obras cadastradas
+- ✅ Excluir obras
+- ✅ Listar todas as obras
+- ✅ Validação de dados
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **Java 21**
+- **JavaFX 21**
+- **PostgreSQL 15**
+- **Maven**
+- **Render** (hospedagem do banco)
+
+---
+
+## 📋 Pré-requisitos
+
+Antes de executar o projeto, você precisa ter instalado:
+
+### 1. Java JDK 21 ou superior
+
+**Verificar se já tem instalado:**
+```bash
+java -version
+```
+
+**Download:**
+- [Oracle JDK 21](https://www.oracle.com/java/technologies/downloads/#java21)
+- [OpenJDK 21](https://adoptium.net/)
+
+### 2. Maven 3.9+
+
+**Verificar se já tem instalado:**
+```bash
+mvn -version
+```
+
+**Download:**
+- [Apache Maven](https://maven.apache.org/download.cgi)
+
+### 3. IDE (Recomendado)
+
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/download/)
+- [Eclipse](https://www.eclipse.org/downloads/)
+- [NetBeans](https://netbeans.apache.org/download/)
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### Opção 1: Usando IDE (Mais Fácil)
+
+#### **IntelliJ IDEA:**
+
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/GabrielSarturi00/Cadastro_de_obras_museu.git
+   ```
+
+2. **Abra o projeto no IntelliJ:**
+   - File → Open → Selecione a pasta do projeto
+
+3. **Aguarde o Maven baixar as dependências**
+   - Isso acontece automaticamente (veja a barra de progresso no canto inferior)
+
+4. **Execute o projeto:**
+   - Localize a classe `HelloApplication.java`
+   - Clique com botão direito → **Run 'HelloApplication.main()'**
+
+#### **Eclipse:**
+
+1. Clone o repositório
+2. File → Import → Maven → Existing Maven Projects
+3. Selecione a pasta do projeto
+4. Aguarde o Maven sincronizar
+5. Botão direito em `HelloApplication.java` → Run As → Java Application
+
+#### **NetBeans:**
+
+1. Clone o repositório
+2. File → Open Project
+3. Aguarde o Maven sincronizar
+4. Botão direito no projeto → Run
+
+---
+
+### Opção 2: Linha de Comando
+
+```bash
+# 1. Clone o repositório
+git clone https://github.com/GabrielSarturi00/Cadastro_de_obras_museu.git
+cd Cadastro_de_obras_museu
+
+# 2. Instale as dependências
+mvn clean install
+
+# 3. Execute o projeto
+mvn javafx:run
+```
+
+---
+
+## ⚙️ Configuração do Banco de Dados
+
+O projeto está configurado para usar PostgreSQL hospedado no **Render**.
+
+A conexão com o banco está configurada na classe `Db.java` no pacote `db`.
+
+> ⚠️ **Nota:** O banco de demonstração já está configurado e funcionando. Para uso pessoal, altere as credenciais na classe `Db.java`.
+
+### Tabelas do Banco de Dados
+
+O banco já está criado com as seguintes tabelas:
+
+- `obras` - Dados principais das obras
+- `autores` - Informações dos autores
+- `editoras` - Informações das editoras
+- `livros` - ISBN dos livros
+- `revistas` - Volume e número das revistas
+- `jornais` - Número de edição dos jornais
+- `livros_online` - Livros digitais
+- `obras_autores` - Relacionamento entre obras e autores
+
+---
+
+## 🖥️ Como Usar o Sistema
+
+### Interface
+
+A interface é dividida em três partes:
+
+**1. Barra de Botões** (topo)
+- **Novo** - Limpa o formulário
+- **Salvar** - Cadastra ou atualiza obra
+- **Excluir** - Remove obra selecionada
+
+**2. Formulário de Cadastro** (parte inferior)
+- Campos: Título, Autor, Tipo, Ano, Editora, Volume, Edição, ISBN/ISSN, Chamada
+
+**3. Tabela de Obras** (centro)
+- Lista todas as obras cadastradas
+- Clique em uma linha para editar
+
+### Operações
+
+**Cadastrar nova obra:**
+1. Clique em "Novo"
+2. Preencha os campos obrigatórios (marcados com *)
+3. Clique em "Salvar"
+
+**Editar obra:**
+1. Clique na obra desejada na tabela
+2. Os dados carregam automaticamente no formulário
+3. Modifique os campos necessários
+4. Clique em "Salvar"
+
+**Excluir obra:**
+1. Clique na obra desejada na tabela
+2. Clique em "Excluir"
+3. Confirme a exclusão
+
+---
+
+## 🐛 Problemas Comuns
+
+### Erro: "JavaFX runtime components are missing"
+
+**Solução:** Execute o comando para reinstalar as dependências:
+```bash
+mvn clean install
+```
+
+### Erro: "Connection refused" ou erro de conexão
+
+**Possíveis causas:**
+- Sem conexão com internet
+- Firewall bloqueando conexão
+
+**Solução:** Verifique sua conexão com a internet.
+
+### Erro: "Java version not compatible"
+
+**Solução:** Certifique-se de estar usando Java 21 ou superior:
+```bash
+java -version
+```
+
+---
+
+## 📦 Dependências Maven
+
+O projeto utiliza as seguintes dependências principais:
+
+- **JavaFX Controls 21** - Interface gráfica
+- **JavaFX FXML 21** - Layout da interface
+- **PostgreSQL 42.7.3** - Conexão com banco de dados
+
+Todas as dependências são gerenciadas automaticamente pelo Maven através do arquivo `pom.xml`.
+
+---
+
+## 🎓 Projeto Acadêmico
+
+- **Instituição:** UFN
+- **Curso:** Sistemas de Informação
+- **Disciplina:** Laboratório de Desenvolvimento de Software
+- **Professor:** Ricardo Frohlich
+- **Ano:** 2025
+
+---
+
+## 👨‍💻 Autor
+
+**Gabriel P Sarturi**
+
+- GitHub: [@GabrielSarturi00](https://github.com/GabrielSarturi00)
+- Email: gabrielgps02@gmail.com
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
+
+---
+
+**⭐ Se este projeto foi útil, considere dar uma estrela no repositório!**
